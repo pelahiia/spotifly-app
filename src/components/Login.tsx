@@ -8,7 +8,7 @@ export const Login: React.FC = () => {
     <div>
       <button>
         <a href={AUTH_URL}>
-          Login with Spotify
+          Login with
         </a>
       </button>
     </div>

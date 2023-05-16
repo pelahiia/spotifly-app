@@ -8,8 +8,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 const app = express();
 app.use(cors());
 app.use(bodyParser.json())
-
-app.post('refresh', (req, res) => {
+app.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken
   const spotifyApi = new SpotifyWebApi({
     redirectUri: 'http://localhost:5173',
@@ -25,8 +24,8 @@ app.post('refresh', (req, res) => {
         accessToken: data.body.access_token,
         expiresIn: data.body.expires_in,
       })
-    
-      }).catch(() => {
+    })
+      .catch(() => {
         res.sendStatus(400)
       })
 });
@@ -39,15 +38,17 @@ app.post('/login', (req, res) => {
     clientSecret: '634a010cd98d40cf80d8341c350793f7',
   })
 
-  spotifyApi.authorizationCodeGrant(code).then(data => {
-    res.json({
-      accessToken: data.body.access_token,
-      refreshToken: data.body.refresh_token,
-      expiresIn: data.body.expires_in
+  spotifyApi
+    .authorizationCodeGrant(code)
+    .then(data => {
+      res.json({
+        accessToken: data.body.access_token,
+        refreshToken: data.body.refresh_token,
+        expiresIn: data.body.expires_in
     })
   }).catch(() => {
     res.sendStatus(400)
   })
 })
 
-app.listen(5174)
+app.listen(3001, ()=> {console.log("app started on port 3001")})

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 type Props = {
@@ -6,6 +6,7 @@ type Props = {
 }
 
 export const Dashboard: React.FC<Props> = ({ code }) => {
+  const [search, setSearch] = useState<string>('');
   const accessToken = useAuth(code);
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -17,7 +18,7 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
           type="search"
           value={search}
           onChange={handleSearch}
-          placeholder='Search your favorite song'
+          placeholder='Search your favorite song or artist'
         />
       </form>
     </div>
