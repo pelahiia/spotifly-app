@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import SpotifyWebApi from 'spotify-web-api-node';
+import { TrackType } from '../types/TrackType';
+import { TrackSearchResult } from './TrackSearchResult';
 
 const spofityApi = new SpotifyWebApi({
   clientId: 'd84eea95398744f8a8af56f1cc4aee70',
@@ -12,8 +14,9 @@ type Props = {
 
 export const Dashboard: React.FC<Props> = ({ code }) => {
   const [search, setSearch] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [searchResults, setSearchResults] = useState<TrackType[]>([]);
   const accessToken = useAuth(code);
+  console.log(searchResults);
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
@@ -27,9 +30,12 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
     if(!search) return setSearchResults([]);
     if (!accessToken) return 
 
+    let cancel = false;
+
     spofityApi.searchTracks(search).then(res => {
+      if (cancel) return;
       if (res.body.tracks) {
-        res.body.tracks.items.map(track => {
+        setSearchResults(res.body.tracks.items.map(track => {
           const smallestAlbumImage = track.album.images.reduce(
             (smallest, image) => {
               if (!image.height) return smallest;
@@ -46,9 +52,12 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
             url: track.uri,
             albumUrl: smallestAlbumImage.url,
           }
-        });
+        }));
       }
     })
+    return () => {
+      cancel = true;
+    };
   }, [search, accessToken])
 
   return(
@@ -61,6 +70,14 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
           placeholder='Search your favorite song or artist'
         />
       </form>
+      <div className="resultsList">
+        {searchResults.map(track => (
+          <TrackSearchResult
+            track={track} 
+            key={track.url}
+          />
+        ))}
+      </div>
     </div>
   )
 }
