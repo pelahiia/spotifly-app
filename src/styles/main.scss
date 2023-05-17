@@ -1,0 +1,17 @@
+@import '_vars.scss';
+@import './login.scss';
+@import '_fonts.scss';
+
+body {
+  background-color: $colorLightMint;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+h1 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}

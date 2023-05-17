@@ -1,0 +1,47 @@
+.login {
+  &-page {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 102px;
+  }
+
+
+  &-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 80px;
+    color: $colorYellow;
+    text-shadow: -1px -1px 0 $colorDelftBlue, 1px -1px 0 $colorDelftBlue, -1px 1px 0 $colorDelftBlue, 1px 1px 0 $colorDelftBlue;
+    padding-bottom: 30px;
+  }
+
+  &-description {
+    font-family: 'Open Sans', sans-serif;
+    color: $colorDelftBlue;
+    font-size: 30px;
+    line-height: 44px;
+    padding-bottom: 36px;
+  }
+
+  &-button {
+    height: 50px;
+    background-color: $colorDelftBlue;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 16px;
+
+    &-text {
+      font-family: 'Open Sans', sans-serif;
+      text-decoration: none;
+      font-style: bold;
+      font-size: 20px;
+      line-height: 20px;
+      color: $colorYellow;
+    }
+  }
+
+  &-image {
+    display: flex;
+    align-self: flex-end;
+  }
+}

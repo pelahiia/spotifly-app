@@ -1,6 +1,6 @@
 import { Login } from './components/Login';
 import { Dashboard } from './components/Dashboard';
-import './App.css';
+import './styles/main.scss';
 
 const code = new URLSearchParams(window.location.search).get("code")
 
