@@ -1,0 +1,55 @@
+.track {
+  &-container {
+    border: 1px solid $colorDelftBlue;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 38px 5px 14px;
+  }
+
+  &-image {
+    &-container {
+      width: 100px;
+      align-items: center;
+      align-self: flex-start;
+
+      &-img {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 234px;
+  }
+
+  &-title {
+    font-family: 'Open Sans', sans-serif;
+    color: $colorDelftBlue;
+    font-style: 14px;
+    font-weight: 400;
+  }
+
+  &-artist {
+    font-family: 'Open Sans', sans-serif;
+    color: $colorDelftBlue;
+    font-style: 14px;
+    font-weight: 300;
+  }
+
+  &-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: auto;
+
+    &-item {
+      height: 26px;
+      width: 26px;
+    }
+  }
+}

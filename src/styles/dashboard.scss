@@ -1,0 +1,29 @@
+.dashboard {
+  &-container {
+    margin-top: 30px;
+    display: flex;
+  }
+
+  &-form {
+    margin-bottom: 24px;
+  }
+
+  &-input {
+    height: 40px;
+    width: 588px;
+    background-color: $colorLightMint;
+    outline: none;
+    padding: 0 16px;
+    border-color: $colorDelftBlue;
+    border-style: dashed;
+    font-family: 'Open Sans', sans-serif;
+    color: $colorDelftBlue;
+    text-shadow: -1px -1px 0 $colorYellow, 1px -1px 0 $colorYellow, -1px 1px 0 $colorYellow, 1px 1px 0 $colorYellow;
+    font-weight: 540;
+    font-size: 18px;
+
+    &::placeholder {
+      text-shadow: none;
+    }
+  }
+}

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { TrackType } from '../types/TrackType';
-import { TrackSearchResult } from './TrackSearchResult';
+import { TrackItem } from './TrackItem';
+import tracksSearchImage from '../images/trackImage.png'
 
 const spofityApi = new SpotifyWebApi({
   clientId: 'd84eea95398744f8a8af56f1cc4aee70',
@@ -61,22 +62,29 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
   }, [search, accessToken])
 
   return(
-    <div>
-      <form action="">
-        <input 
-          type="search"
-          value={search}
-          onChange={handleSearch}
-          placeholder='Search your favorite song or artist'
-        />
-      </form>
-      <div className="resultsList">
-        {searchResults.map(track => (
-          <TrackSearchResult
-            track={track} 
-            key={track.url}
+    <div className="dashboard-container">
+      <div className='dashboard-tracks'>
+        <form 
+          action="/search" 
+          method="get"
+          className='dashboard-form'
+        >
+          <input 
+            type="search"
+            value={search}
+            onChange={handleSearch}
+            placeholder='Search your favorite song or artist'
+            className='dashboard-input'
           />
-        ))}
+        </form>
+        <div className="results-list">
+          {searchResults.map(track => (
+            <TrackItem
+              track={track} 
+              key={track.url}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
