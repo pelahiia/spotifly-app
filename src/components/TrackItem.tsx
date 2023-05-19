@@ -8,9 +8,13 @@ import addPlaylist from '../images/addPlaylist.png';
 type Props = {
   track: TrackType;
   key: string;
+  chooseTrack: (track: TrackType) => void;
 }
 
-export const TrackItem: React.FC<Props> = ({ track }) => {
+export const TrackItem: React.FC<Props> = ({ track, chooseTrack }) => {
+  const handlePlay = () => {
+    chooseTrack(track)
+  }
   return (
     <div className="track-container">
       <div className="track-image-container">
@@ -29,6 +33,7 @@ export const TrackItem: React.FC<Props> = ({ track }) => {
           src={play} 
           alt="Play" 
           className='track-actions-item'
+          onClick={handlePlay}
         />
         <img 
           src={favorite} 

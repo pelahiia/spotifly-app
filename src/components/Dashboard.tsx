@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { TrackType } from '../types/TrackType';
 import { TrackItem } from './TrackItem';
-import tracksSearchImage from '../images/trackImage.png'
+import { Player } from './Player';
 
 const spofityApi = new SpotifyWebApi({
   clientId: 'd84eea95398744f8a8af56f1cc4aee70',
@@ -16,6 +16,13 @@ type Props = {
 export const Dashboard: React.FC<Props> = ({ code }) => {
   const [search, setSearch] = useState<string>('');
   const [searchResults, setSearchResults] = useState<TrackType[]>([]);
+  const [playingTrack, setPlayingTrack] = useState<TrackType>()
+
+  const chooseTrack = (track: TrackType) => {
+    setPlayingTrack(track)
+    setSearch('')
+  }
+
   const accessToken = useAuth(code);
   console.log(searchResults);
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,8 +89,15 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
             <TrackItem
               track={track} 
               key={track.url}
+              chooseTrack={chooseTrack}
             />
           ))}
+        </div>
+        <div>
+          <Player
+            accessToken={accessToken} 
+            trackUri={playingTrack?.url}
+          />
         </div>
       </div>
     </div>
