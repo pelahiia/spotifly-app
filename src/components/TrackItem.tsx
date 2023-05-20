@@ -22,6 +22,7 @@ export const TrackItem: React.FC<Props> = ({ track, chooseTrack }) => {
           src={track.albumUrl} 
           alt="Track Image" 
           className='track-image-container-img'
+          onClick={handlePlay}
         />
       </div>
       <div className="track-info">

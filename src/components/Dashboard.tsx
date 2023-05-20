@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { TrackType } from '../types/TrackType';
@@ -16,11 +17,13 @@ type Props = {
 export const Dashboard: React.FC<Props> = ({ code }) => {
   const [search, setSearch] = useState<string>('');
   const [searchResults, setSearchResults] = useState<TrackType[]>([]);
-  const [playingTrack, setPlayingTrack] = useState<TrackType>()
+  const [playingTrack, setPlayingTrack] = useState<TrackType>();
+  const [lyrics, setLyrics] = useState<string>('');
 
   const chooseTrack = (track: TrackType) => {
-    setPlayingTrack(track)
-    setSearch('')
+    setPlayingTrack(track);
+    setSearch('');
+    setLyrics('');
   }
 
   const accessToken = useAuth(code);
@@ -28,6 +31,21 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
+
+  useEffect(() => {
+    if (!playingTrack) return
+
+    axios
+      .get("http://localhost:3001/lyrics", {
+        params: {
+          track: playingTrack.title,
+          artist: playingTrack.artist,
+        },
+      })
+      .then(res => {
+        setLyrics(res.data.lyrics)
+      })
+  }, [playingTrack])
 
   useEffect(() => {
     if (!accessToken) return 
@@ -92,10 +110,15 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
               chooseTrack={chooseTrack}
             />
           ))}
+          {searchResults.length === 0 && (
+            <div className="track-lyrics">
+              {lyrics}
+            </div>
+          )}
         </div>
         <div>
           <Player
-            accessToken={accessToken} 
+            accessToken={accessToken}
             trackUri={playingTrack?.url}
           />
         </div>

@@ -4,10 +4,13 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import SpotifyWebApi from 'spotify-web-api-node';
+import lyricsSearcher from 'lyrics-searcher';
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken
   const spotifyApi = new SpotifyWebApi({
@@ -50,5 +53,19 @@ app.post('/login', (req, res) => {
     res.sendStatus(400)
   })
 })
+
+app.get("/lyrics", async (req, res) => {
+  const artist: any = req.query.artist;
+  const track: any = req.query.track;
+  
+  let lyrics;
+
+  try {
+    lyrics = await lyricsSearcher(artist, track);
+  } catch (error) {
+    lyrics = 'No lyrics found';
+  }
+  res.json({ lyrics });
+});
 
 app.listen(3001, ()=> {console.log("app started on port 3001")})
