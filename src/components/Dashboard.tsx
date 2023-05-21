@@ -5,6 +5,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 import { TrackType } from '../types/TrackType';
 import { TrackItem } from './TrackItem';
 import { Player } from './Player';
+import searchImage from '../images/trackImage.png';
 
 const spofityApi = new SpotifyWebApi({
   clientId: 'd84eea95398744f8a8af56f1cc4aee70',
@@ -87,42 +88,54 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
   }, [search, accessToken])
 
   return(
-    <div className="dashboard-container">
-      <div className='dashboard-tracks'>
-        <form 
-          action="/search" 
-          method="get"
-          className='dashboard-form'
-        >
-          <input 
-            type="search"
-            value={search}
-            onChange={handleSearch}
-            placeholder='Search your favorite song or artist'
-            className='dashboard-input'
-          />
-        </form>
-        <div className="results-list">
-          {searchResults.map(track => (
-            <TrackItem
-              track={track} 
-              key={track.url}
-              chooseTrack={chooseTrack}
+    <>
+      <div className="dashboard-container">
+        <div className='dashboard-tracks'>
+          <form 
+            action="/search" 
+            method="get"
+            className='dashboard-form'
+          >
+            <input 
+              type="search"
+              value={search}
+              onChange={handleSearch}
+              placeholder='Search your favorite song or artist'
+              className='dashboard-input'
             />
-          ))}
-          {searchResults.length === 0 && (
-            <div>
-              <pre className="track-lyrics">{lyrics}</pre>
-            </div>
-          )}
+          </form>
+          <div className="results-list">
+            {searchResults.map(track => (
+              <TrackItem
+                track={track} 
+                key={track.url}
+                chooseTrack={chooseTrack}
+              />
+            ))}
+            {playingTrack && (
+              <div>
+                <pre className="track-lyrics">{lyrics}</pre>
+              </div>
+            )}
+            {searchResults.length === 0 && (
+              <div className="search-container">
+                <div className="search-text">
+                  Discover your favorite songs and artists effortlessly with Spotifly's powerful search feature. Explore a vast musical universe by typing in song titles, artist names, or keywords, and let the music take flight.
+                </div>
+                <div className="search-image">
+                  <img src={searchImage} alt="Search Image" />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-        <div className='player-container'>
-          <Player
-            accessToken={accessToken}
-            trackUri={playingTrack?.url}
-          />
-        </div>
+     </div>
+      <div className='player-container'>
+        <Player
+          accessToken={accessToken}
+          trackUri={playingTrack?.url}
+        />
       </div>
-    </div>
+    </>
   )
 }

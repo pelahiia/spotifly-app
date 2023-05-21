@@ -1,7 +1,14 @@
 .dashboard {
   &-container {
     margin-top: 30px;
-    width: 100%;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 30px);
+  }
+
+  &-tracks {
+   flex: 1;
   }
 
   &-form {
@@ -32,4 +39,15 @@
   font-family: 'Open Sans', sans-serif ;
   font-size: 20px;
   color: $colorDelftBlue;
+}
+
+.search {
+  &-container {
+    display: flex;
+  }
+  &-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    color: $colorDelftBlue;
+  }
 }
