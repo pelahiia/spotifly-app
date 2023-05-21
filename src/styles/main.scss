@@ -3,11 +3,11 @@
 @import '_fonts.scss';
 @import './dashboard.scss';
 @import './track.scss';
+@import './player.scss';
 
 body {
   background-color: $colorLightMint;
-  margin-left: 60px;
-  margin-right: 60px;
+  margin: 1;
 }
 
 h1 {

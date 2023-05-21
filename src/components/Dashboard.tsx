@@ -111,12 +111,12 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
             />
           ))}
           {searchResults.length === 0 && (
-            <div className="track-lyrics">
-              {lyrics}
+            <div>
+              <pre className="track-lyrics">{lyrics}</pre>
             </div>
           )}
         </div>
-        <div>
+        <div className='player-container'>
           <Player
             accessToken={accessToken}
             trackUri={playingTrack?.url}

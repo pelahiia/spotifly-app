@@ -7,7 +7,6 @@ export const useAuth = (code: string | null) => {
   const [expiresIn, setExpiresIn] = useState<number | null>();
 
   useEffect(() => {
-    console.log('in')
     axios
       .post("http://localhost:3001/login", {
         code,
@@ -18,9 +17,8 @@ export const useAuth = (code: string | null) => {
         setExpiresIn(res.data.expiresIn)
         window.history.pushState({}, '', "/")
       })
-      .catch((err) => {
-        console.log(err)
-       // window.location.href = "/"
+      .catch(() => {
+      window.location.href = "/"
       })
   }, [code])
 
