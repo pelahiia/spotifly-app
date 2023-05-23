@@ -4,10 +4,13 @@
 @import './dashboard.scss';
 @import './track.scss';
 @import './player.scss';
+@import './sidebar.scss';
+@import './theme-toggle.scss';
+@import './language-toggle.scss';
 
 body {
   background-color: $colorLightMint;
-  margin: 1;
+  margin: 0;
 }
 
 h1 {
