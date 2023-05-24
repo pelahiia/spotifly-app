@@ -14,14 +14,20 @@ export const SideBar: React.FC = () => {
         />
         <div className="sidebar-title">Spotifly</div>
       </div>
-      <div className="sidebar-item">Search</div>
-      <div className="sidebar-item">Favorites</div>
-      <div className="sidebar-item">Playlists</div>
-      <div className="sidebar-item">Logout</div>
-      <div className="sidebar-item sidebar-toggles">
-        <ThemeToggle />
+      <div className="sidebar-toggles">
         <LangToggle />
       </div>
+      <div className="sidebar-items">
+        <div className="sidebar-item">Search</div>
+        <div className="sidebar-item">Favorites</div>
+        <div className="sidebar-item">Playlists</div>
+        <div className="sidebar-item">Logout</div>
+      </div>
+      <div className="sidebar-toggles">
+        <ThemeToggle />
+        <div className="theme-toggle">Dark mode</div>
+      </div>
+      <div className="sidebar-help">Help Center</div>
     </div>
   )
 }

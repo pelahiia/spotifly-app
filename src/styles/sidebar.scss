@@ -2,21 +2,31 @@
   height: 100vh;
   width: 280px;
   border: 1px solid $colorDelftBlue;
+  border-top: none;
+  border-bottom: none;
   flex-shrink: 0;
   padding: 14px;
+  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
-  gap: 52px;
 
   &-logo {
     display: flex;
     gap: 8px;
     padding-top: 10px;
+    margin-bottom: 46px;
 
     &-image {
       height: 50px;
       width: 50px;
     }
+  }
+
+  &-items {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-bottom: 58px;
   }
 
   &-title {
@@ -35,5 +45,20 @@
 
   &-toggles {
     display: flex;
+    gap: 16px;
+    margin-bottom: 48px;
+    align-items: center;
   }
+
+  &-help {
+    font-family: 'Open Sans', sans-serif;
+    color: $colorDelftBlue;
+    font-size: 18px;
+  }
+}
+
+.theme-toggle {
+  font-family: 'Open Sans', sans-serif;
+  color: $colorDelftBlue;
+  font-size: 18px;
 }

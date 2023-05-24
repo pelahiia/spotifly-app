@@ -1,106 +1,30 @@
-.switch {
-  position: relative;
-  display: inline-block;
-  margin: 0 5px;
-}
-
-.switch > span {
-  position: absolute;
-  top: 14px;
-  pointer-events: none;
+.react-tel-input {
   font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
   font-size: 12px;
-  line-height: 12px;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
-  width: 50%;
-  text-align: center;
-}
-
-input.check-toggle-round-flat:checked ~ .off {
-  color: $colorDelftBlue;
-}
-
-input.check-toggle-round-flat:checked ~ .on {
-  color: $colorLightMint;
-}
-
-.switch > span.on {
-  left: 0;
-  padding-left: 2px;
-  color: $colorDelftBlue;
-}
-
-.switch > span.off {
-  right: 0;
-  padding-right: 4px;
-  color: $colorLightMint;
-}
-
-.check-toggle {
-  position: absolute;
-  margin-left: -9999px;
-  visibility: hidden;
-}
-.check-toggle + label {
-  display: block;
   position: relative;
-  cursor: pointer;
-  outline: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  width: 100%;
 }
 
-input.check-toggle-round-flat + label {
-  padding: 2px;
-  width: 100px;
-  height: 35px;
-  background-color: $colorDelftBlue;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  -ms-border-radius: 60px;
-  -o-border-radius: 60px;
-  border-radius: 60px;
-}
-input.check-toggle-round-flat + label:before, input.check-toggle-round-flat + label:after {
-  display: block;
-  position: absolute;
-  content: "";
+.react-tel-input :disabled {
+  cursor: not-allowed;
 }
 
-input.check-toggle-round-flat + label:before {
-  top: 2px;
-  left: 2px;
-  bottom: 2px;
-  right: 2px;
-  background-color: $colorDelftBlue;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  -ms-border-radius: 60px;
-  -o-border-radius: 60px;
-  border-radius: 60px;
+.flag {
+  width: 25px;
+  height: 20px;
+  background-image: url("https://raw.githubusercontent.com/bl00mber/react-phone-input-2/master/src/style/common/high-res.png");
+  background-repeat: no-repeat;
 }
 
-input.check-toggle-round-flat + label:after {
-  top: 4px;
-  left: 4px;
-  bottom: 4px;
-  width: 48px;
-  background-color: $colorLightMint;
-  -webkit-border-radius: 52px;
-  -moz-border-radius: 52px;
-  -ms-border-radius: 52px;
-  -o-border-radius: 52px;
-  border-radius: 52px;
-  -webkit-transition: margin 0.2s;
-  -moz-transition: margin 0.2s;
-  -o-transition: margin 0.2s;
-  transition: margin 0.2s;
+.ua {
+  background-position: -120px -336px;
 }
 
-input.check-toggle-round-flat:checked + label:after {
-  margin-left: 44px;
+.us {
+  background-position: -168px -336px;
+}
+
+.ReactFlagsSelect-module_selectBtn__19wW7 {
+  height: 30px;
+  width: 120px;
 }

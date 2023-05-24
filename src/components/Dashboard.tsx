@@ -132,13 +132,13 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
               )}
             </div>
           </div>
-        </div>
+          <div className='player-container'>
+            <Player
+              accessToken={accessToken}
+              trackUri={playingTrack?.url}
+            />
       </div>
-      <div className='player-container'>
-        <Player
-          accessToken={accessToken}
-          trackUri={playingTrack?.url}
-        />
+        </div>
       </div>
     </>
   )

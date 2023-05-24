@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactFlagsSelect from "react-flags-select";
 
 export const LangToggle: React.FC = () => {
+  const [select, setSelect] = useState("US");
+
+  const onSelect = (code: string) => setSelect(code);
+
   return (
     <div className="language-toggle">
-      <div className="switch">
-        <input id="language-toggle" className="check-toggle check-toggle-round-flat" type="checkbox"/>
-        <label htmlFor="language-toggle"></label>
-        <span className="on">UKR</span>
-        <span className="off">EN</span>
-  	  </div>
+      <ReactFlagsSelect
+        selected={select}
+        onSelect={onSelect}
+        countries={["UA", "US"]}
+        customLabels={{"US": "ENG", "UA": "UKR"}}
+      />
     </div>
   )
 }
