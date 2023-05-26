@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 30px);
+    width: 100%;
   }
 
   &-tracks {
@@ -38,19 +39,38 @@
   }
 }
 
+.track-lyrics-container {
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .track-lyrics {
-  font-family: 'Open Sans', sans-serif ;
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   color: $colorDelftBlue;
+  max-width: 800px;
+  padding: 20px;
 }
+
 
 .search {
   &-container {
     display: flex;
+    padding: 30px;
+    gap: 44px;
   }
+
   &-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 24px;
+    font-size: 32px;
+    line-height: 48px;
     color: $colorDelftBlue;
+  }
+
+  &-illustration {
+    height: 410px;
+    width: 410px;
   }
 }

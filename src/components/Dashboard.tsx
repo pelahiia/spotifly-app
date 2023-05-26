@@ -89,7 +89,6 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
   }, [search, accessToken])
 
   return(
-    <>
       <div className="dashboard">
         <SideBar />
         <div className="dashboard-container">
@@ -116,7 +115,7 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
                 />
               ))}
               {playingTrack && (
-                <div>
+                <div className="track-lyrics-container">
                   <pre className="track-lyrics">{lyrics}</pre>
                 </div>
               )}
@@ -126,7 +125,11 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
                     Discover your favorite songs and artists effortlessly with Spotifly's powerful search feature. Explore a vast musical universe by typing in song titles, artist names, or keywords, and let the music take flight.
                   </div>
                   <div className="search-image">
-                    <img src={searchImage} alt="Search Image" />
+                    <img 
+                      src={searchImage} 
+                      alt="Search Image" 
+                      className='search-illustration'
+                    />
                   </div>
                 </div>
               )}
@@ -137,9 +140,8 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
               accessToken={accessToken}
               trackUri={playingTrack?.url}
             />
-      </div>
+          </div>
         </div>
       </div>
-    </>
   )
 }
