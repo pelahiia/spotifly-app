@@ -28,7 +28,7 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
     setLyrics('');
   }
 
-  const accessToken = useAuth(code);
+  const { accessToken } = useAuth(code);
   console.log(searchResults);
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);

@@ -1,0 +1,58 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 18px;
+
+  &-logo {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &-image {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  &-items {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    align-items: center;
+  }
+  
+  &-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: $colorYellow;
+    text-shadow: -1px -1px 0 $colorDelftBlue, 1px -1px 0 $colorDelftBlue, -1px 1px 0 $colorDelftBlue, 1px 1px 0 $colorDelftBlue;
+  }
+
+  &-toggles {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &-items {
+    display: flex;
+    flex-direction: row;
+    gap: 86px;
+  }
+
+  &-help {
+    font-family: 'Open Sans', sans-serif;
+    color: $colorDelftBlue;
+    font-size: 18px;
+  }
+}
+
+.theme-toggle {
+  font-family: 'Open Sans', sans-serif;
+  color: $colorDelftBlue;
+  font-size: 18px;
+}
+
+
