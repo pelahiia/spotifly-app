@@ -119,7 +119,7 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
                   <pre className="track-lyrics">{lyrics}</pre>
                 </div>
               )}
-              {searchResults.length === 0 && (
+              {searchResults.length === 0 && !playingTrack && (
                 <div className="search-container">
                   <div className="search-text">
                     Discover your favorite songs and artists effortlessly with Spotifly's powerful search feature. Explore a vast musical universe by typing in song titles, artist names, or keywords, and let the music take flight.
