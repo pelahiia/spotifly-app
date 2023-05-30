@@ -4,6 +4,11 @@ import { ThemeToggle } from "./ThemeToggle";
 import { LangToggle } from "./LanguageToggle";
 
 export const SideBar: React.FC = () => {
+  const handleLogout = () => {
+    localStorage.removeItem('loggedIn');
+    window.location.href = '/';
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
@@ -21,7 +26,15 @@ export const SideBar: React.FC = () => {
         <div className="sidebar-item">Search</div>
         <div className="sidebar-item">Favorites</div>
         <div className="sidebar-item">Playlists</div>
-        <div className="sidebar-item">Logout</div>
+        <div className="sidebar-item">
+          <a 
+            href="/"
+            onClick={handleLogout}
+            className="sidebar-item"
+          >
+            Logout
+          </a>
+        </div>
       </div>
       <div className="sidebar-toggles">
         <ThemeToggle />
