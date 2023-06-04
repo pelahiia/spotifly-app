@@ -7,6 +7,7 @@ import { TrackItem } from './TrackItem';
 import { Player } from './Player';
 import { SideBar } from './Sidebar';
 import searchImage from '../images/trackImage.png';
+import { useTranslation } from 'react-i18next';
 
 const spofityApi = new SpotifyWebApi({
   clientId: 'd84eea95398744f8a8af56f1cc4aee70',
@@ -21,6 +22,7 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
   const [searchResults, setSearchResults] = useState<TrackType[]>([]);
   const [playingTrack, setPlayingTrack] = useState<TrackType>();
   const [lyrics, setLyrics] = useState<string>('');
+  const { t } = useTranslation();
 
   const chooseTrack = (track: TrackType) => {
     setPlayingTrack(track);
@@ -86,7 +88,9 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
     return () => {
       cancel = true;
     };
-  }, [search, accessToken])
+  }, [search, accessToken]);
+
+  const searchInputPlaceholder = t('searchInput')
 
   return(
       <div className="dashboard">
@@ -102,7 +106,7 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
                 type="search"
                 value={search}
                 onChange={handleSearch}
-                placeholder='Search your favorite song or artist'
+                placeholder={searchInputPlaceholder}
                 className='dashboard-input'
               />
             </form>
@@ -122,7 +126,7 @@ export const Dashboard: React.FC<Props> = ({ code }) => {
               {searchResults.length === 0 && !playingTrack && (
                 <div className="search-container">
                   <div className="search-text">
-                    Discover your favorite songs and artists effortlessly with Spotifly's powerful search feature. Explore a vast musical universe by typing in song titles, artist names, or keywords, and let the music take flight.
+                    {t('startPageText')}
                   </div>
                   <div className="search-image">
                     <img 

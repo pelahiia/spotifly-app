@@ -11,10 +11,14 @@
     "start:server": "ts-node-esm ./src/server/server.ts"
   },
   "dependencies": {
+    "@types/i18n": "^0.13.6",
+    "@types/i18next-xhr-backend": "^1.4.2",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "finder": "^0.1.4",
+    "i18next": "^22.5.0",
+    "i18next-browser-languagedetector": "^7.0.2",
     "lyrics": "^0.0.1",
     "lyrics-finder": "^21.7.0",
     "lyrics-searcher": "^1.0.58",
@@ -22,6 +26,7 @@
     "react-day-and-night-toggle": "^1.0.18",
     "react-dom": "^18.2.0",
     "react-flags-select": "^2.2.3",
+    "react-i18next": "^12.3.1",
     "react-spotify-web-playback": "^0.14.0",
     "spotify-web-api-node": "^5.0.2",
     "ts-node": "^10.9.1"
